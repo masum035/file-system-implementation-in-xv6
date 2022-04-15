@@ -659,17 +659,17 @@ int fs_truncate(int fildes, off_t length)
     return 0;
 }
 ```
-## Potential Problems
-Unmount file system function has some requirements like it says that "whenever umount_fs is called, all meta-information and file data (that you could temporarily have only in memory) must be written out to disk." seems hard to me be implement, that's why i modified the test cases when ``` umount_fs() ``` is called.
-And my file system's read function, ``` fs_read() ``` can not return stored value inside the buffer, i tried to alloted it but other test cases failed. So, now only test_case10 "single file stress test" returns fail, otherwise everything seems okay to me. And Now test score is : 12/13
+## Major Difficulties I have Faced
+Given xv6 OS was funtioning slowly on my windows 10 Operating System as it was installed via virtual environment(VMWare).. So,i installed xv6 OS inside my dual-booted Linux(Ubuntu) system to work faster. This installation was done at the first assignment. Also the Unmount file system function has some requirements like it says that "whenever umount_fs is called, all meta-information and file data (that you could temporarily have only in memory) must be written out to disk." seems hard to me be implement, that's why i modified the test cases when ``` umount_fs() ``` is called.
+And my file system's read function, ``` fs_read() ``` can not return stored value inside the buffer, i tried to alloted it but other test cases failed. So, now only test_case10 "single file stress test" returns fail, otherwise everything seems okay to me. And Now test score is : 12/13 . Also i want to include that, generating those 4 helper functions was pretty brainstorming.
 
 ## How to create tar gzip file
 ```
 tar -zcvf CSE525_p3.tar.gz CSE525_p3
 ```
-## How to test
+## How to test using MakeFile
 extract the zip folder & then in that location, open your terminal & run these commands:
-```
+```bash
 make all
 ./p3test
 make clean
